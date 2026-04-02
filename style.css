@@ -1,60 +1,130 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  font-family: Arial;
-  background: white;
-  color: #b30000;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #ffffff, #f2f2f2);
+    color: #333;
 }
 
-.header {
-  background: red;
-  color: white;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  gap: 10px;
+/* HEADER */
+header {
+    background: linear-gradient(90deg, #ff0000, #b30000);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.header img {
-  width: 50px;
-  border-radius: 50%;
+/* NAVBAR */
+nav {
+    display: flex;
+    background: #cc0000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-.menu {
-  display: flex;
-  background: #ffe5e5;
+nav button {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    background: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.menu button {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  background: none;
-  color: red;
-  cursor: pointer;
+nav button:hover {
+    background: #990000;
 }
 
-.menu button:hover {
-  background: red;
-  color: white;
+/* CONTAINER */
+.container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
 }
 
-.page { display: none; }
-.active { display: block; }
-
-.box {
-  border: 2px solid red;
-  padding: 10px;
-  margin: 10px 0;
+/* CARD */
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: 0.3s;
 }
 
-button {
-  background: red;
-  color: white;
-  border: none;
-  padding: 8px;
+.card:hover {
+    transform: translateY(-5px);
 }
 
-.team, .match {
-  border-bottom: 1px solid red;
-  padding: 10px;
+/* INPUT */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: red;
+    outline: none;
+}
+
+/* BUTTON */
+button.action {
+    background: linear-gradient(90deg, red, darkred);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+}
+
+button.action:hover {
+    transform: scale(1.05);
+    background: darkred;
+}
+
+/* MATCH LIST */
+.match {
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: #fafafa;
+    border-left: 5px solid red;
+    transition: 0.3s;
+}
+
+.match:hover {
+    background: #ffe5e5;
+}
+
+/* ADMIN */
+.admin-only {
+    display: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+
+    header {
+        font-size: 18px;
+    }
 }
