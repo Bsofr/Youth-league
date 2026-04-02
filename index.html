@@ -1,62 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Youth League Hà Nội</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hệ Thống Youth League Hà Nội</title>
+
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- HEADER -->
 <div id="header-container"></div>
 
-<nav>
+<!-- MENU -->
+<nav class="navbar">
 <button onclick="show('home')">Trang chủ</button>
-<button onclick="show('teams')">Đội</button>
+<button onclick="show('teams')">Đội bóng</button>
 <button onclick="show('matches')">Lịch đấu</button>
 <button onclick="show('admin')">Admin</button>
 </nav>
 
+<!-- CONTENT -->
 <div class="container">
 
-<div id="home">Chào mừng đến giải đấu ⚽</div>
+<!-- HOME -->
+<div id="home" class="page">
+<h2>⚽ Hệ Thống Youth League Hà Nội</h2>
+<p>Chào mừng đến với giải đấu chuyên nghiệp</p>
+</div>
 
-<div id="teams" style="display:none;">
-<h3>Đội bóng</h3>
+<!-- TEAMS -->
+<div id="teams" class="page" style="display:none;">
+<h3>🏆 Danh sách đội</h3>
 <div id="teamList"></div>
 </div>
 
-<div id="matches" style="display:none;">
-<h3>Lịch thi đấu</h3>
+<!-- MATCHES -->
+<div id="matches" class="page" style="display:none;">
+<h3>📅 Lịch thi đấu</h3>
 <div id="matchList"></div>
 </div>
 
-<div id="admin" style="display:none;">
+<!-- ADMIN -->
+<div id="admin" class="page" style="display:none;">
+
+<!-- LOGIN -->
 <div id="loginBox">
-<input id="user" placeholder="User">
-<input id="pass" placeholder="Pass">
-<button class="action" onclick="login()">Login</button>
+<h3>🔐 Đăng nhập Admin</h3>
+<input id="user" placeholder="Tài khoản">
+<input id="pass" type="password" placeholder="Mật khẩu">
+<button class="action" onclick="login()">Đăng nhập</button>
 </div>
 
+<!-- PANEL -->
 <div id="adminPanel" style="display:none;">
-<h4>Thêm đội</h4>
-<input id="teamName">
-<button class="action" onclick="addTeam()">Thêm</button>
+<h3>⚙️ Quản lý</h3>
 
-<h4>Thêm trận</h4>
-<input id="teamA">
-<input id="teamB">
-<input id="score">
-<button class="action" onclick="addMatch()">Thêm</button>
+<h4>➕ Thêm đội</h4>
+<input id="teamName" placeholder="Tên đội">
+<button class="action" onclick="addTeam()">Thêm đội</button>
+
+<h4>➕ Thêm trận</h4>
+<input id="teamA" placeholder="Đội A">
+<input id="teamB" placeholder="Đội B">
+<input id="score" placeholder="Tỉ số (VD: 2-1)">
+<button class="action" onclick="addMatch()">Thêm trận</button>
+
 </div>
-</div>
 
 </div>
-  <script src="app.js"></script>
-</body>
 
-<script src="script.js"></script>
+</div>
 
+<!-- JS -->
+<script src="app.js"></script>
+
+<!-- LOAD HEADER -->
 <script>
 fetch('header.html')
 .then(res => res.text())
