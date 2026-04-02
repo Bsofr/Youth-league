@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Youth League Hà Nội</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <img src="logo.png">
+  <h1>Hệ Thống Youth League Hà Nội</h1>
+  <button onclick="login()">Admin</button>
+</div>
+
+<!-- MENU -->
+<div class="menu">
+  <button onclick="showPage('home')">Trang chủ</button>
+  <button onclick="showPage('league')">Giải đấu</button>
+  <button onclick="showPage('match')">Lịch thi đấu</button>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<div id="home" class="page active">
+  <h2>Chào mừng đến giải đấu</h2>
+</div>
+
+<div id="league" class="page">
+  <h2>Quản lý giải</h2>
+
+  <select id="leagueSelect"></select>
+
+  <div class="box">
+    <input id="teamName" placeholder="Tên đội">
+    <button onclick="addTeam()">Thêm đội</button>
+  </div>
+
+  <div id="teamList"></div>
+</div>
+
+<div id="match" class="page">
+  <h2>Lịch thi đấu</h2>
+
+  <select id="leagueMatch"></select>
+  <select id="team1"></select>
+  <select id="team2"></select>
+  <input type="date" id="date">
+
+  <button onclick="addMatch()">Tạo trận</button>
+
+  <div id="matchList"></div>
+</div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
