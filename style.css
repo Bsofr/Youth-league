@@ -1,4 +1,4 @@
-/* RESET */
+/* ===== RESET ===== */
 * {
     margin: 0;
     padding: 0;
@@ -7,86 +7,81 @@
 
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #ffffff, #e6e6e6);
+    background: linear-gradient(135deg, #ffffff, #f5f5f5);
     color: #222;
 }
 
-/* HEADER */
-header {
+/* ===== HEADER ===== */
+.main-header {
     background: linear-gradient(120deg, #ff0000, #990000);
-    padding: 25px 15px;
-    text-align: center;
+    padding: 20px;
     color: white;
-    position: relative;
-    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-header img {
-    width: 70px;
-    margin-bottom: 10px;
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 1100px;
+    margin: auto;
 }
 
-header h1 {
-    font-size: 26px;
-    letter-spacing: 1px;
+.logo {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 3px solid white;
 }
 
-/* NAVBAR */
+.title h1 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.title p {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+/* ===== NAV ===== */
 nav {
     display: flex;
     background: #b30000;
-    border-bottom: 3px solid #ff0000;
 }
 
 nav button {
     flex: 1;
-    padding: 15px;
+    padding: 14px;
     border: none;
-    background: transparent;
+    background: none;
     color: white;
     font-weight: bold;
     cursor: pointer;
-    position: relative;
     transition: 0.3s;
 }
 
-nav button::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 3px;
-    width: 0;
-    background: white;
-    transition: 0.3s;
+nav button:hover {
+    background: #800000;
 }
 
-nav button:hover::after {
-    width: 100%;
-}
-
-/* CONTAINER */
+/* ===== CONTAINER ===== */
 .container {
     max-width: 1100px;
     margin: auto;
     padding: 20px;
 }
 
-/* CARD */
+/* ===== CARD ===== */
 .card {
     background: white;
-    border-radius: 20px;
+    border-radius: 18px;
     padding: 20px;
     margin-top: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    transition: 0.3s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-.card:hover {
-    transform: translateY(-6px);
-}
-
-/* INPUT */
+/* ===== INPUT ===== */
 input, select {
     width: 100%;
     padding: 12px;
@@ -95,13 +90,13 @@ input, select {
     border: 1px solid #ddd;
 }
 
-/* BUTTON */
+/* ===== BUTTON ===== */
 button.action {
-    background: linear-gradient(90deg, #ff0000, #cc0000);
+    background: linear-gradient(90deg, red, darkred);
     color: white;
-    padding: 12px;
-    border-radius: 12px;
     border: none;
+    padding: 12px;
+    border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
@@ -112,16 +107,16 @@ button.action:hover {
     transform: scale(1.05);
 }
 
-/* MATCH CARD FIFA STYLE */
+/* ===== MATCH CARD (FIFA STYLE) ===== */
 .match {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(90deg, #fff, #ffe6e6);
+    border-left: 6px solid red;
     border-radius: 15px;
     padding: 15px;
-    margin-top: 10px;
-    border-left: 6px solid red;
+    margin-top: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
@@ -130,30 +125,31 @@ button.action:hover {
     display: flex;
     align-items: center;
     gap: 10px;
+    font-weight: bold;
 }
 
 .team img {
-    width: 35px;
-    height: 35px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
 }
 
 /* SCORE */
 .score {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     color: red;
 }
 
-/* CATEGORY BADGE */
+/* BADGE (U15, U17...) */
 .badge {
     background: red;
     color: white;
     padding: 4px 10px;
     border-radius: 8px;
     font-size: 12px;
+    text-align: center;
     margin-bottom: 5px;
-    display: inline-block;
 }
 
 /* ADMIN */
@@ -161,10 +157,38 @@ button.action:hover {
     display: none;
 }
 
-/* MOBILE */
+/* ===== TABLE (BXH nếu dùng) ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th {
+    background: red;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .match {
         flex-direction: column;
         gap: 10px;
+        text-align: center;
+    }
+
+    .header-content {
+        flex-direction: column;
+    }
+
+    nav {
+        flex-direction: column;
     }
 }
