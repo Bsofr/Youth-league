@@ -1,1 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Youth League Hà Nội</title>
 
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f5f5f5;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(90deg, red, darkred);
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+/* NAV */
+nav {
+    display: flex;
+    background: #b30000;
+}
+
+nav button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* CONTAINER */
+.container {
+    padding: 15px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* INPUT */
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+/* BUTTON */
+button.action {
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* MATCH */
+.match {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-left: 5px solid red;
+    margin-top: 10px;
+    background: #fff;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+⚽ Hệ Thống Youth League Hà Nội
+</header>
+
+<nav>
+<button onclick="show('home')">Trang chủ</button>
+<button onclick="show('teams')">Đội</button>
+<button onclick="show('matches')">Lịch đấu</button>
+<button onclick="show('admin')">Admin</button>
+</nav>
+
+<div class="container">
+
+<!-- HOME -->
+<div id="home">
+<h3>Chào mừng đến giải đấu</h3>
+</div>
+
+<!-- TEAMS -->
+<div id="teams" style="display:none;">
+<h3>Danh sách đội</h3>
+<div id="teamList"></div>
+</div>
+
+<!-- MATCHES -->
+<div id="matches" style="display:none;">
+<h3>Lịch thi đấu</h3>
+<div id="matchList"></div>
+</div>
+
+<!-- ADMIN -->
+<div id="admin" style="display:none;">
+<h3>Admin</h3>
+
+<div id="loginBox">
+<input id="user" placeholder="User">
+<input id="pass" placeholder="Password">
+<button class="action" onclick="login()">Đăng nhập</button>
+</div>
+
+<div id="adminPanel" style="display:none;">
+
+<h4>Thêm đội</h4>
+<input id="teamName" placeholder="Tên đội">
+<button class="action" onclick="addTeam()">Thêm</button>
+
+<h4>Thêm trận</h4>
+<input id="teamA" placeholder="Đội A">
+<input id="teamB" placeholder="Đội B">
+<input id="score" placeholder="Tỉ số (0-0)">
+<button class="action" onclick="addMatch()">Thêm</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+let teams = JSON.parse(localStorage.getItem("teams")) || [];
+let matches = JSON.parse(localStorage.getItem("matches")) || [];
+let isAdmin = false;
+
+/* NAV */
+function show(id){
+    document.querySelectorAll('.container > div').forEach(d => d.style.display='none');
+    document.getElementById(id).style.display='block';
+}
+
+/* LOGIN */
+function login(){
+    let u = document.getElementById("user").value;
+    let p = document.getElementById("pass").value;
+
+    if(u=="admin" && p=="123"){
+        isAdmin = true;
+        document.getElementById("loginBox").style.display="none";
+        document.getElementById("adminPanel").style.display="block";
+    } else {
+        alert("Sai tài khoản");
+    }
+}
+
+/* TEAM */
+function addTeam(){
+    let name = document.getElementById("teamName").value;
+    teams.push(name);
+    localStorage.setItem("teams", JSON.stringify(teams));
+    renderTeams();
+}
+
+function renderTeams(){
+    let html="";
+    teams.forEach(t=>{
+        html+=`<div class="card">${t}</div>`;
+    });
+    document.getElementById("teamList").innerHTML=html;
+}
+
+/* MATCH */
+function addMatch(){
+    let a=document.getElementById("teamA").value;
+    let b=document.getElementById("teamB").value;
+    let s=document.getElementById("score").value;
+
+    matches.push({a,b,s});
+    localStorage.setItem("matches", JSON.stringify(matches));
+    renderMatches();
+}
+
+function renderMatches(){
+    let html="";
+    matches.forEach(m=>{
+        html+=`
+        <div class="match">
+            <div>${m.a}</div>
+            <div><b>${m.s}</b></div>
+            <div>${m.b}</div>
+        </div>`;
+    });
+    document.getElementById("matchList").innerHTML=html;
+}
+
+/* INIT */
+renderTeams();
+renderMatches();
+</script>
+
+</body>
+</html>
